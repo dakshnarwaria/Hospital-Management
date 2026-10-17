@@ -211,6 +211,14 @@ SELECT * FROM current_admissions;
 
 > The script starts with `DROP DATABASE IF EXISTS hospital_db;`, so running it again resets all data to the sample data.
 
+To load the full dataset directly from SQL instead, run `db/seed_large.sql` after the schema:
+
+```bash
+mysql -u root -p < db/seed_large.sql
+```
+
+This replaces the table data while preserving the schema objects. It loads 15 departments, 50 doctors, 35 rooms, 500 patients, 900 appointments, 450 prescriptions, 70 admissions (10 active), and 750 bills. The final query reports the loaded counts. This SQL dataset is deterministic; use `npm run seed` below for the randomized alternative.
+
 ### 3. Create the `.env.local` file
 
 The app reads its database credentials from `.env.local` in the project root (the same folder as `package.json`). This file is private and is never pushed to GitHub, so each person creates their own.
@@ -326,7 +334,8 @@ These use the sample data from a fresh `schema.sql` run.
 Hospital-Management/
 ├── .env.example          # Environment variable template (safe to commit)
 ├── db/
-│   └── schema.sql        # Tables, view, procedures, triggers, indexes, sample data
+│   ├── schema.sql        # Tables, view, procedures, triggers, indexes, sample data
+│   └── seed_large.sql    # Deterministic full dataset (500 patients, 50 doctors, etc.)
 ├── lib/
 │   ├── db.ts             # mysql2 connection pool
 │   ├── errors.ts         # MySQL error to JSON message mapping
