@@ -215,7 +215,7 @@ export default function RoomsPage() {
                         </span>
                       </div>
                       <p className="text-xs text-gray-400 mt-1 font-mono">
-                        Daily Charge: ${Number(room.daily_charge).toFixed(2)}/day
+                        Daily Charge: ₹{Number(room.daily_charge).toFixed(2)}/day
                       </p>
                     </div>
 
@@ -344,7 +344,7 @@ export default function RoomsPage() {
 
             <div>
               <label className="block text-xs font-semibold text-gray-700 dark:text-gray-300 mb-1">
-                Daily Charge ($) *
+                Daily Charge (₹) *
               </label>
               <input
                 type="number"

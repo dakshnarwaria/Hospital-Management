@@ -245,6 +245,24 @@ npm run dev
 
 Open **http://localhost:3000** in your browser. If you edit `.env.local` while the server is running, stop it (Ctrl+C) and run `npm run dev` again.
 
+### 5. Seed Realistic Dataset (Recommended)
+
+To populate the database with a full, realistic hospital dataset formatted in Indian Rupees (₹):
+
+```bash
+npm run seed
+```
+
+This generates:
+- **500 Patients** with realistic Indian demographics, contacts, and blood groups
+- **50 Specialist Doctors** across 15 hospital departments with consultation fees in ₹
+- **35 Rooms** across General, Private, and ICU wards with daily bed charges in ₹
+- **800+ Clinical Appointments** with realistic, randomized workloads across doctors (both odd and even appointment counts, zero slot collisions)
+- **450 Prescriptions** attached to completed consultations
+- **70 Admissions** (including 10 active inpatients with full rooms to demonstrate `before_admission` triggers)
+- **750 Billing Statements** in ₹ across Consultation, Admission, Medicine, and Lab tests (75% Paid, 25% Pending)
+
+
 ### Troubleshooting
 
 | Problem | Likely cause and fix |

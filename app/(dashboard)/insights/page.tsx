@@ -501,13 +501,22 @@ export default function InsightsPage() {
                     <tbody className="divide-y divide-gray-100 dark:divide-emerald-950/30">
                       {currentReport.data.map((row, rowIdx) => (
                         <tr key={rowIdx} className="hover:bg-emerald-50/20 dark:hover:bg-emerald-950/20">
-                          {Object.values(row).map((val: any, valIdx) => (
-                            <td key={valIdx} className="px-3 py-2 whitespace-nowrap font-mono">
-                              {typeof val === 'number'
-                                ? val.toLocaleString()
-                                : String(val ?? '-')}
-                            </td>
-                          ))}
+                          {Object.entries(row).map(([colKey, val]: [string, any], valIdx) => {
+                            const isCurrency = ['amount', 'fee', 'revenue', 'billed', 'charge'].some((k) =>
+                              colKey.toLowerCase().includes(k)
+                            );
+                            return (
+                              <td key={valIdx} className="px-3 py-2 whitespace-nowrap font-mono">
+                                {typeof val === 'number'
+                                  ? isCurrency
+                                    ? `₹${val.toLocaleString()}`
+                                    : val.toLocaleString()
+                                  : isCurrency && !isNaN(Number(val)) && val !== null && val !== ''
+                                    ? `₹${Number(val).toLocaleString()}`
+                                    : String(val ?? '-')}
+                              </td>
+                            );
+                          })}
                         </tr>
                       ))}
                     </tbody>

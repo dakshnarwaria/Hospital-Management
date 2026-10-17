@@ -204,7 +204,7 @@ export default function DashboardPage() {
         />
         <StatCard
           title="Pending Dues"
-          value={`$${summary.pendingBillTotal.toLocaleString()}`}
+          value={`₹${summary.pendingBillTotal.toLocaleString()}`}
           icon={CreditCard}
           trend="Outstanding"
           trendDirection="down"
@@ -222,7 +222,7 @@ export default function DashboardPage() {
                 Appointments by Doctor
               </h3>
               <p className="text-xs text-gray-500 dark:text-gray-400">
-                Total consultations booked across clinical specialties
+                Top 10 specialists by consultations booked
               </p>
             </div>
             <Link
@@ -235,7 +235,10 @@ export default function DashboardPage() {
 
           <div className="h-72 w-full">
             <ResponsiveContainer width="100%" height="100%">
-              <BarChart data={charts.appointmentsPerDoctor} margin={{ top: 10, right: 10, left: -20, bottom: 25 }}>
+              <BarChart
+                data={charts.appointmentsPerDoctor?.slice(0, 10) || []}
+                margin={{ top: 10, right: 10, left: -20, bottom: 25 }}
+              >
                 <CartesianGrid strokeDasharray="3 3" opacity={0.15} />
                 <XAxis
                   dataKey="doctor_name"

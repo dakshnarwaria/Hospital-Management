@@ -214,7 +214,7 @@ function PatientDetailInner({
                   : 'text-emerald-600 dark:text-emerald-400'
               }`}
             >
-              ${totalPending.toLocaleString()}
+              ₹{totalPending.toLocaleString()}
             </span>
           </div>
         </div>
@@ -448,7 +448,7 @@ function PatientDetailInner({
                     </div>
                     <div className="flex items-center gap-3">
                       <span className="text-base font-extrabold text-gray-900 dark:text-white">
-                        ${Number(b.amount).toFixed(2)}
+                        ₹{Number(b.amount).toFixed(2)}
                       </span>
                       <button
                         onClick={() => handleToggleBillStatus(b.bill_id, b.status)}

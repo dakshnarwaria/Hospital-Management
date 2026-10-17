@@ -232,7 +232,7 @@ export default function DoctorsPage() {
       sortable: true,
       render: (d) => (
         <span className="font-mono font-bold text-emerald-600 dark:text-emerald-400">
-          ${Number(d.consultation_fee).toFixed(2)}
+          ₹{Number(d.consultation_fee).toFixed(2)}
         </span>
       ),
     },
@@ -540,7 +540,7 @@ export default function DoctorsPage() {
             </div>
             <div>
               <label className="block text-xs font-semibold text-gray-700 dark:text-gray-300 mb-1">
-                Consultation Fee ($) *
+                Consultation Fee (₹) *
               </label>
               <input
                 type="number"

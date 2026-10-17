@@ -421,7 +421,7 @@ export default function AppointmentsPage() {
               <option value="">Select a doctor...</option>
               {doctors.map((d) => (
                 <option key={d.doctor_id} value={d.doctor_id}>
-                  {d.name} &bull; {d.specialization} (${d.consultation_fee})
+                  {d.name} &bull; {d.specialization} (₹{d.consultation_fee})
                 </option>
               ))}
             </select>

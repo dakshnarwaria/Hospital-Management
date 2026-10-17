@@ -212,11 +212,11 @@ export default function BillsPage() {
     },
     {
       key: 'amount',
-      label: 'Amount ($)',
+      label: 'Amount (₹)',
       sortable: true,
       render: (b) => (
         <span className="font-mono font-black text-gray-900 dark:text-white">
-          ${Number(b.amount).toFixed(2)}
+          ₹{Number(b.amount).toFixed(2)}
         </span>
       ),
     },
@@ -289,7 +289,7 @@ export default function BillsPage() {
             Total Pending Dues
           </span>
           <p className="text-2xl font-black text-rose-700 dark:text-rose-300 mt-1">
-            ${totalPending.toLocaleString()}
+            ₹{totalPending.toLocaleString()}
           </p>
           <p className="text-xs text-rose-600/70 mt-1">Awaiting patient settlement</p>
         </div>
@@ -299,7 +299,7 @@ export default function BillsPage() {
             Total Collected Revenue
           </span>
           <p className="text-2xl font-black text-emerald-700 dark:text-emerald-300 mt-1">
-            ${totalPaid.toLocaleString()}
+            ₹{totalPaid.toLocaleString()}
           </p>
           <p className="text-xs text-emerald-600/70 mt-1">Cleared bills</p>
         </div>
@@ -309,7 +309,7 @@ export default function BillsPage() {
             Total Invoiced Amount
           </span>
           <p className="text-2xl font-black text-gray-900 dark:text-white mt-1">
-            ${(totalPending + totalPaid).toLocaleString()}
+            ₹{(totalPending + totalPaid).toLocaleString()}
           </p>
           <p className="text-xs text-gray-400 mt-1">{bills.length} total invoices issued</p>
         </div>
@@ -338,7 +338,7 @@ export default function BillsPage() {
                   <p className="text-[10px] text-gray-400">Patient #{item.patient_id}</p>
                 </div>
                 <span className="font-mono font-black text-sm text-rose-600 dark:text-rose-400">
-                  ${Number(item.pending_total).toLocaleString()}
+                  ₹{Number(item.pending_total).toLocaleString()}
                 </span>
               </div>
             ))}
@@ -454,7 +454,7 @@ export default function BillsPage() {
 
             <div>
               <label className="block text-xs font-semibold text-gray-700 dark:text-gray-300 mb-1">
-                Amount ($) * (Check &gt; 0)
+                Amount (₹) * (Check &gt; 0)
               </label>
               <input
                 type="number"
